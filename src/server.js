@@ -1,27 +1,14 @@
-const { getProducts } = require('./models/products')
+const {handleHome, handleProducts, handleContact, handleNotFound} = require('./routes')
 
-// Maneja la ruta principal
-const handleHome = (req, res) => {
-}
+const http = require('http')
 
-// Maneja la ruta de productos
-const handleProducts = (req, res) => {
-}
 
-// Maneja la ruta de contacto
-const handleContact = (req, res) => {
-}
-
-// Maneja rutas no encontradas
-const handleNotFound = (req, res) => {
-}
 
 /**
  * Crea un servidor HTTP que utiliza la función router para manejar las solicitudes
  * @returns {http.Server} Instancia del servidor HTTP
  */
 function createServer () {
-  const http = require('http')
   const server = http.createServer((req, res) => {
     // Maneja todas las rutas de la aplicación
     const url = req.url
@@ -31,16 +18,16 @@ function createServer () {
     switch (url) {
       case '/':
         handleHome(req, res)
-        break
+        break;
       case '/productos':
         handleProducts(req, res)
-        break
+        break;
       case '/contacto':
         handleContact(req, res)
-        break
+        break;
       default:
         handleNotFound(req, res)
-        break
+        break;
     }
   })
 
